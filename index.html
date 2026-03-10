@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photo Capture & Upload</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Photo Capture & Upload</h1>
+            <p>Upload or capture photos</p>
+        </div>
+
+        <div class="options">
+            <!-- Upload Option -->
+            <div class="option-card">
+                <div class="icon">📁</div>
+                <h2>Upload Photo</h2>
+                <p>Choose a photo from your device storage</p>
+                <input 
+                    type="file" 
+                    id="fileInput" 
+                    accept="image/*"
+                    hidden
+                >
+                <button class="btn btn-primary" onclick="document.getElementById('fileInput').click()">
+                    Browse Files
+                </button>
+            </div>
+
+            <!-- Camera Option -->
+            <div class="option-card">
+                <div class="icon">📷</div>
+                <h2>Capture Photo</h2>
+                <p>Take a photo using your device camera</p>
+                <button class="btn btn-primary" onclick="toggleCamera()">
+                    Open Camera
+                </button>
+            </div>
+        </div>
+
+        <!-- Camera Section -->
+        <div id="cameraSection" class="camera-section hidden">
+            <div class="camera-container">
+                <video id="video" autoplay playsinline></video>
+                <canvas id="canvas" hidden></canvas>
+                <div class="camera-controls">
+                    <button class="btn btn-capture" onclick="capturePhoto()">
+                        📸 Take Photo
+                    </button>
+                    <button class="btn btn-secondary" onclick="closeCamera()">
+                        Close Camera
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Image Preview Section -->
+        <div id="previewSection" class="preview-section hidden">
+            <h2>Your Photo</h2>
+            <div class="preview-container">
+                <img id="previewImage" src="" alt="Preview">
+            </div>
+            <div class="preview-controls">
+                <button class="btn btn-secondary" onclick="downloadPhoto()">
+                    ⬇️ Download
+                </button>
+                <button class="btn btn-secondary" onclick="clearPhoto()">
+                    🗑️ Clear
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
