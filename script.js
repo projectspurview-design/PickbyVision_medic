@@ -93,15 +93,28 @@ function closeCamera() {
     document.getElementById('video').srcObject = null;
 }
 
-// Download photo
-function downloadPhoto() {
-    const image = document.getElementById('previewImage').src;
-    const link = document.createElement('a');
-    link.href = image;
-    link.download = `photo-${new Date().getTime()}.png`;
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+// Send photo (placeholder - in a real app, this would send to a server)
+function sendPhoto() {
+    // Show success message
+    const sendButton = document.querySelector('.btn-send');
+    const originalText = sendButton.innerHTML;
+    
+    sendButton.innerHTML = '✅ Sent!';
+    sendButton.style.background = 'linear-gradient(135deg, #4CAF50 0%, #45a049 100%)';
+    
+    // Reset button after 2 seconds
+    setTimeout(() => {
+        sendButton.innerHTML = originalText;
+    }, 2000);
+    
+    // In a real application, you would send the image to a server here
+    // For example:
+    // const imageData = document.getElementById('previewImage').src;
+    // fetch('/api/send-photo', {
+    //     method: 'POST',
+    //     body: JSON.stringify({ image: imageData }),
+    //     headers: { 'Content-Type': 'application/json' }
+    // });
 }
 
 // Clear photo
